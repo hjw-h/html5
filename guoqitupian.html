@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<canvas id="canvas1" width="600PX" height="600PX"></canvas>
+		<div id="app">
+			<!-- <input type="text" @click="show()"  value="点击生成图片" /> -->
+			<input type="text" @keyup.enter="show()" id="myTest" placeholder="回车生成国旗" />
+			<h5>请输入国家英文，首字母大写</h5>
+		</div>
+		
+		<script type="text/javascript">
+			let v = new Vue({
+				el:"#app",
+				data:{
+					
+				},
+				methods:{
+					show(){
+						let canvas = document.getElementById("canvas1");
+						let context= canvas.getContext("2d");
+						let img= new Image();
+						let userString = document.getElementById("myTest").value;
+						
+						
+						if(userString=="China" ){
+							img.src="./img/china.jpg";
+						}
+						
+						
+						else if(userString=="American" ){
+							img.src="./img/American.jpg";
+						}
+						else{
+							alert("输入错误或未收录")
+						}
+						
+					   
+					   
+					   img.onload=function(){
+						   context.drawImage(img,0,0);
+					   }
+					   
+					   /* 点击两次才可生成图片
+					   img.src="./img/test.jpg";
+					   context.drawImage(img,0,0);
+					   */
+					   
+					}
+					
+				}
+			})
+			
+		</script>
+		
+	</body>
+</html>
