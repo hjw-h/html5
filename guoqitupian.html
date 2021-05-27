@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			
+			<h3>找出两处图片的不同之处(太阳颜色不算，共五处,答对加五分，答错扣一分)</h3>
+			
+			<img src="./img/1.jpg" @click="show()" />
+			<h3>重复点击一处可得分,找出五处后再点击一次即可成功</h3>
+			<h3>当前分数为：{{score}}</h3>
+			
+		</div>
+		
+		<script type="text/javascript">
+			let v = new Vue({
+				el:'#app',
+				data:{
+					cishu:0,
+					score:0,
+					a:0,
+					b:0,
+					c:0,
+					d:0,
+					e:0,
+					
+					
+				},
+				methods:{
+						
+					show(){
+						
+						if(v.a==0 || v.b==0 || v.c==0 || v.d==0 ||  v.e==0){
+							
+						
+							if((event.clientX>424 && event.clientX<474 && event.clientY>195 && event.clientY<237 )||
+								(event.clientX>47 && event.clientX<92 && event.clientY>192 && event.clientY<237 )
+							)
+							
+							{
+								
+								
+								v.a++;
+								v.cishu++;
+								v.score=v.score+5;
+								alert("此处正确");
+								
+							}
+							else if((event.clientX>417 && event.clientX<461 && event.clientY>241 && event.clientY<273 )||
+									(event.clientX>42 && event.clientX<71 && event.clientY>236 && event.clientY<264 )
+							
+							){
+																
+								v.b++;
+								v.cishu++;
+								v.score=v.score+5;
+								alert("此处正确");
+								
+							}
+							else if((event.clientX>574 && event.clientX<613 && event.clientY>189 && event.clientY<222 )||
+									(event.clientX>185 && event.clientX<220 && event.clientY>189 && event.clientY<221 )
+							
+							){
+								
+								v.c++;
+								v.cishu++;
+								v.score=v.score+5;
+								alert("此处正确");
+								
+							}
+							else if((event.clientX>424 && event.clientX<437 && event.clientY>369 && event.clientY<374 )||
+									(event.clientX>38 && event.clientX<50 && event.clientY>367 && event.clientY<374 )
+							
+							){
+								
+								v.d++;
+								v.cishu++;
+								v.score=v.score+5;
+								alert("此处正确");
+								
+							}
+							else if((event.clientX>646 && event.clientX<727 && event.clientY>369 && event.clientY<408 )||
+									(event.clientX>260 && event.clientX<341 && event.clientY>369 && event.clientY<408 )
+							
+							){
+								
+								v.e++;
+								v.cishu++;
+								v.score=v.score+5;
+								alert("此处正确");
+								
+							}
+							else{
+								v.cishu++;
+								v.score=v.score-1;
+								alert("此处失败")
+							}
+						}
+						else{
+							alert("成功！一共点击了  "+ v.cishu +" 次!总分为 "+v.score +" 分" )
+						}
+						
+					   
+					   
+					   /*
+					   test(){
+						   alert("x,y="+event.clientX+","+event.clientY)
+					   }
+					   */
+					   
+					
+				    }
+					
+				}
+			})
+			
+		</script>
+		
+	</body>
+</html>
